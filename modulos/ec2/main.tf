@@ -6,11 +6,14 @@ resource "aws_instance" "servidor_terraform" {
   subnet_id              = each.value.subnet_id
   vpc_security_group_ids = [aws_security_group.grupo_seguridad.id]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              echo "Prueba funcionamiento, soy ${each.value.nombre}" > index.html
-              nohup busybox httpd -f -p ${var.puerto_servidor} &
-              EOF
+
+resource "null_resource" "ejecutar_script"
+  
+  provisioner "local-exec" {
+    command = "python3 /home/cristian/app/requirements.txt"
+
+  provisioner "local-exec" {
+    command = "python3 /home/cristian/app/main.py"
 
   tags = {
     Name = each.value.nombre

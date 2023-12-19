@@ -4,6 +4,6 @@ variable "nombre_dynamo" {
 }
 
 variable "hash_key" {
-  description = "Columna dynamo"
+  description = "Columna principal dynamo"
   type        = map(string)
 }

@@ -19,13 +19,3 @@ variable "tipo_instancia" {
   type        = string
   default     = "t2.micro"
 }
-
-variable "servidores" {
-  description = "Guia servidores"
-
-  type = map(object({
-    nombre    = string,
-    subnet_id = string
-    })
-  )
-}
